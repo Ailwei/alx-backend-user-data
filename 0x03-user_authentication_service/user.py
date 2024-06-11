@@ -8,6 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class User(Base):
     """
     SQLAlchemy model for the users table.
@@ -21,4 +22,7 @@ class User(Base):
     reset_token = Column(String(250), nullable=True)
 
     def b__repr__(self):
+        """
+        representation of a user
+        """
         return f"<User(id={self.id}, email={self.email})>"
