@@ -29,14 +29,8 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """Adds user to database
-        
-        Args:
-            email (str): The user's email address
-            hashed_password (str): The user's hashed password
-        
-        Returns:
-            User: The created User object
+        """
+        Adds user to database
         """
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
@@ -44,17 +38,8 @@ class DB:
         return user
 
     def find_user_by(self, **kwargs) -> User:
-        """Finds user by key word args
-        
-        Args:
-            **kwargs: Arbitrary keyword arguments for filtering users
-        
-        Returns:
-            User: The first row found in the users table as filtered by kwargs
-        
-        Raises:
-            InvalidRequestError: If no kwargs are provided or invalid column names are used
-            NoResultFound: If no user is found with the given kwargs
+        """
+        Finds user by key word args
         """
         if not kwargs:
             raise InvalidRequestError
@@ -73,13 +58,6 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """Update users attributes
-        
-        Args:
-            user_id (int): The ID of the user to update
-            **kwargs: Arbitrary keyword arguments for updating user attributes
-        
-        Raises:
-            ValueError: If invalid column names are used
         """
         user = self.find_user_by(id=user_id)
 
